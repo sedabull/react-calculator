@@ -39,10 +39,12 @@ class Calculator extends React.Component {
                 state.history = '';
             }//end if
 
-            if(state.active.match(/-*0+(?!\.)/)) {
+            while(state.active.match(/^(-?0[^\.])/)) {
                 state.active = state.active.replace('0', '');
             }//end if
-            
+
+            if(state.active === '0') state.active = '';
+
             return {
                 active: state.active + value,
                 history: state.history
